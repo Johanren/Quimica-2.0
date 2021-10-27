@@ -58,7 +58,14 @@ if (isset($_GET['action'])) {
 
                     <div class="col">
                         <h6>Contraseña</h6>
-                        <input type="password" class="form-control" name="claveEditar" value="<?php print $login['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+                        <input type="password" class="form-control" name="claveEditar" id="password" value="<?php print $login['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <h6>Confirmar Contraseña</h6>
+                        <input type="password" class="form-control" id="confirm_password"  name="claveEditarCon" value="<?php print $login['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  onkeyup='check();'>
+                        <span id='message'></span>
                     </div>
                 </div>
                 <br><br>

@@ -4,43 +4,49 @@ class UsuarioControlador
 	//METODO PARA REGISTRAR LOS USURARIOS:
 	public function registrarUsuariosControlador()
 	{
-		if (isset($_POST['emailRegistro'])) {
-			$email = $_POST['emailRegistro'];
-			$modeloEmail = new LoginModelo();
-			$respuesta = $modeloEmail->ConsultarEmailModelo($email);
-			if ($respuesta) {
-				print "<script>alert('Email ya Ingresado')</script>";
-			}else{
-				if (isset($_POST['enviars'])) {
-					$datos = array(
-						'nombre' => $_POST['nombreRegistro'],
-						'apellido' => $_POST['apellidoRegistro'],
-						't_d' => $_POST['t_dRegistro'],
-						'n_d' => $_POST['n_dRegistro'],
-						'fn' => $_POST['fnRegistro']
-					);
-					$registrarUsuario = new UsuariosModel();
-					$respuesta = $registrarUsuario->registarUsuariosModelo($datos);
+		if (isset($_POST['enviars'])) {
+			if ($_POST['claveRegistro'] == $_POST['numeroRegistro']) {
+				if (isset($_POST['emailRegistro'])) {
+					$email = $_POST['emailRegistro'];
+					$modeloEmail = new LoginModelo();
+					$respuesta = $modeloEmail->ConsultarEmailModelo($email);
 					if ($respuesta) {
-						$idPersona = $registrarUsuario->optenerUltimoIdModelo();
-						$ultimoId = $idPersona[0]['id'];
-					}
-					if (isset($_POST['enviars'])) {
-						$hash=password_hash($_POST['numeroRegistro'], PASSWORD_DEFAULT);
-						$datosLogin = array('email' => $_POST['emailRegistro'],
-							'clave' => $hash,
-							'idPersona' => $ultimoId,
-							'idRol' => 2);
-						$registarLogin = new LoginModelo();
-						$respuesta = $registarLogin->registrarLoginModelo($datosLogin);
-						if ($respuesta == 'success') {
-							print "<script>alert('Usuario Registrado')</script>";
-						} else {
-							print "Usuario no Registrado";
+						print "<script>alert('Email ya Ingresado')</script>";
+					}else{
+						if (isset($_POST['enviars'])) {
+							$datos = array(
+								'nombre' => $_POST['nombreRegistro'],
+								'apellido' => $_POST['apellidoRegistro'],
+								't_d' => $_POST['t_dRegistro'],
+								'n_d' => $_POST['n_dRegistro'],
+								'fn' => $_POST['fnRegistro']
+							);
+							$registrarUsuario = new UsuariosModel();
+							$respuesta = $registrarUsuario->registarUsuariosModelo($datos);
+							if ($respuesta) {
+								$idPersona = $registrarUsuario->optenerUltimoIdModelo();
+								$ultimoId = $idPersona[0]['id'];
+							}
+							if (isset($_POST['enviars'])) {
+								$hash=password_hash($_POST['numeroRegistro'], PASSWORD_DEFAULT);
+								$datosLogin = array('email' => $_POST['emailRegistro'],
+									'clave' => $hash,
+									'idPersona' => $ultimoId,
+									'idRol' => 2);
+								$registarLogin = new LoginModelo();
+								$respuesta = $registarLogin->registrarLoginModelo($datosLogin);
+								if ($respuesta == 'success') {
+									print "<script>alert('Usuario Registrado')</script>";
+								} else {
+									print "Usuario no Registrado";
+								}
+							}
+
 						}
 					}
-
 				}
+			}else{
+				print "<script>alert('Contraseñas no iguales')</script>";
 			}
 		}
 	}
@@ -95,6 +101,12 @@ class UsuarioControlador
 			);
 			$modelo = new UsuariosModel();
 			$respuesta = $modelo ->actualizarUsuarioModel($datos);
+			if ($respuesta) {
+				print "<script>alert('usuario Actualizado')</script>";
+				if ($respuesta) {
+					echo '<script>window.location="index.php?action=usuario"</script>';
+				}
+			}
 		}
 	}
 

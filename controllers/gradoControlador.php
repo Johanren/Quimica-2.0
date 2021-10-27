@@ -8,11 +8,12 @@ class GradoControlador
 			$gradoReg = new GradoModelo();
 			$respuesta = $gradoReg->registrarGradoModelo($datos, 'grado');
 			if ($respuesta == 'success') {
-				header('location:gradook');
+				print "<script>alert('Grado Registrado')</script>";
+				if ($respuesta) {
+					echo '<script>window.location="personasGrado"</script>';
+				}
 			}else{
-				print '<p class="alert alert-success" role="alert">Grado No registrado<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></p>';
+				print "<script>alert('Grado no registrado')</script>";
 			}
 		}
 	} 
@@ -31,14 +32,15 @@ class GradoControlador
 			$gradoRegPer = new GradoModelo();
 			$respuesta = $gradoRegPer->registrarPersonasGradoModelo($datos, 'personasgrado');
 			if ($respuesta == 'success') {
-				header('location:personasGrado');
+				print "</script>alert('Estudiante Registrado')</script>";
+				if ($respuesta) {
+					echo '<script>window.location="personasGrado"</script>';
+				}
 			}else{
-				print '<p class="alert alert-success" role="alert"Persona No registrado<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-				<span aria-hidden="true">&times;</span>
-				</button></p>';
-			}
+				print "<script>alert('Estudiante no registrado')</script>";
 		}
 	}
+}
 
 	public function listarPersonasGrado(){
 		$listarPerGra = new GradoModelo();

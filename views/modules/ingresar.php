@@ -129,10 +129,17 @@
               <h6>E-mail</h6>
               <input type="email" class="form-control" name="emailRegistro" id="emailRegistro" placeholder="Ingrese un Email Valido" required="">
             </div>
+          </div>
+          <div class="row">
             <div class="col">
               <h6>Contraseña</h6>
-              <input type="password" class="form-control" name="numeroRegistro" id="numeroRegistro" placeholder="Maximo 8 dijitos" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+              <input type="password" class="form-control" id="password" name="claveRegistro" id="numeroRegistro" placeholder="Maximo 8 dijitos" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
             </div>
+            <div class="col">
+              <h6>Confirmacion</h6>
+              <input type="password" class="form-control" id="confirm_password" name="numeroRegistro" id="numeroRegistro" placeholder="Maximo 8 dijitos" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
+            </div>
+            <span id='message'></span>
           </div>
 
           <button type="submit" name="enviars" class="btn btn-primary mb-2">Registrar</button>

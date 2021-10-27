@@ -30,7 +30,7 @@ class LoginControlador {
 				print "<script>alert('Usuario Logeado')</script>";
 				header('location:usuario');
 			} else {
-				header('location:usuario');
+				header('location:inicio');
 			}
 		} else {
 			header('location:falla');
@@ -66,7 +66,7 @@ function ingresarLoginSalirControlador()
 		if ($_SESSION['Roles'] == "Administrador") {
 			header('location:usuario');
 		} else {
-			header('location:usuario');
+			header('location:inicio');
 		}
 	} else {
 		header('location:falla');
@@ -107,19 +107,26 @@ function actualizarRolControlador(){
 
 function actualizarRolControlador1(){
 	if (isset($_POST['enviar'])) {
-		$hash=password_hash($_POST['claveEditar'], PASSWORD_DEFAULT);
-		$datosEditar1 = array('idPersona' => $_POST['id'],
-			'email' => $_POST['emailEditar'],
-			'clave' => $hash,
-			'idRol' => $_POST['rolEditar']);
-			#var_dump($datosEditar1);
-		$editarRol1 = new LoginModelo();
-		$respuesta = $editarRol1->actualizarRolModelo1($datosEditar1);
-		if ($respuesta) {
-			print '<p class="alert alert-success" role="alert"><a href="usuario">Usuario Actualizado Correctamente</a><button type="button" class="close" data-dismiss="alert" aria-label="Close">
-			<span aria-hidden="true">&times;</span>
-			</button></p>';
+		if ($_POST['claveEditar'] == $_POST['claveEditarCon']) {
+			if (isset($_POST['enviar'])) {
+				$hash=password_hash($_POST['claveEditar'], PASSWORD_DEFAULT);
+				$datosEditar1 = array('idPersona' => $_POST['id'],
+					'email' => $_POST['emailEditar'],
+					'clave' => $hash,
+					'idRol' => $_POST['rolEditar']);
+				$editarRol1 = new LoginModelo();
+				$respuesta = $editarRol1->actualizarRolModelo1($datosEditar1);
+				if ($respuesta) {
+					print "<script>alert('Usuario Actualizado')</script>";
+					if ($respuesta) {
+						echo '<script>window.location="index.php?action=usuario"</script>';
+					}
+				}
+			}
+		}else{
+			print "<script>alert('Contraseñas no coinciden')</script>";
 		}
 	}
+	
 }
 }

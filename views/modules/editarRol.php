@@ -60,14 +60,20 @@ $editarRol->actualizarRolControlador1();
 			<h6>Email</h6>
 			<input type="email" class="form-control" name="emailEditar" value="<?php print $personas2['email'] ?>" placeholder="Email" required="">
 		</div>
-
+	</div>
+	<div class="row">
 		<div class="col">
 			<h6>Contraseña</h6>
-			<input type="password" class="form-control" name="claveEditar" value="<?php print $personas2['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+			<input type="password" class="form-control" id="password" name="claveEditar" value="<?php print $personas2['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
+		</div>
+		<div class="col">
+			<h6>Contraseña</h6>
+			<input type="password" class="form-control" id="confirm_password" name="claveEditarCon" value="<?php print $personas2['password']?>" placeholder="Contraseña" maxlength="8" required="" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" onkeyup='check();'>
 		</div>
 	</div>
+	<span id='message'></span>
 	<h6>Rol</h6>
-		<select name="rolEditar" class="form-control" required> 
+	<select name="rolEditar" class="form-control" required> 
 		<option>selecione rol</option>
 		<?php print '<option value="2" ';
 		if ($personas2['idRol'] == 2)
@@ -81,7 +87,7 @@ $editarRol->actualizarRolControlador1();
 		if ($personas2['idRol'] == 1)
 			print 'selected';
 		print '>Administrador</option>';?>
-		</select>
+	</select>
 	<button type="submit" class="btn btn-primary mt-2" name="enviar">Actualizar</button>
 	
 </form>

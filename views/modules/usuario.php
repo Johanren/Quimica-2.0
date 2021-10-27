@@ -28,11 +28,8 @@ if (isset($_GET['action'])) {
 }
 ?>
 <?php
-
-//session_start();
-
 if ($_SESSION['Roles'] != "Administrador") {
-	header('location:index.php?action=usuario');
+	echo '<script>window.location="inicio"</script>';
 	if ($_SESSION['Roles'] == "Administrador") {
 		header('location:index.php?action=usuario');
 	}
@@ -46,7 +43,6 @@ if ($_SESSION['Roles'] != "Administrador") {
 		header('location:index.php?action=inicio');
 	}
 }
-
 
 ?>
 <?php  

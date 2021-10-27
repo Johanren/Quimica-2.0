@@ -88,7 +88,10 @@
 
 
     ?>
-    <?php include("views/modules/navegacion.php"); ?>
+    <header>
+        <?php include("views/modules/navegacion.php"); ?>
+    </header>
+    
 
     <section>
        <?php
@@ -158,6 +161,18 @@
         contenedor_carga.style.opacity = 0
         contenedor_carga.style.visibility = 'hidden'
     })
+</script>
+<script>
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'Contraseñas correctas';
+    } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'Contraseñas incorrectas';
+    }
+}
 </script>
 </body>
 

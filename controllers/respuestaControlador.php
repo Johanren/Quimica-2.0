@@ -15,7 +15,12 @@ class RespuestaControlador {
 		$respuestaModelo = new RespuestaModelo();
 		$respuesta = $respuestaModelo->insertarRespuestasModelo($datosRespuesta);
 		if ($respuesta) {
-			header('location:actividadVista');
+			print "<script>alert('Actividad Registrada')</script>";
+			echo '<script>window.location="actividadVista"</script>';
+		}else{
+			print "<script>alert('Actividad No Registrada')</script>";
+			print "<script>alert('Nombre de la actividad ya existente')</script>";
+			echo '<script>window.location="actividad"</script>';
 		}
 	}
 

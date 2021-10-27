@@ -32,7 +32,12 @@ class RespuestaModelo extends Conexion {
 			$stmt->bindParam(2, $datosRespuesta['descripcionRespuesta'], PDO::PARAM_STR);
 			$stmt->bindParam(3, $datosRespuesta['resultado'], PDO::PARAM_STR);
 			$stmt->bindParam(4, $datosRespuesta['resultadoMultiple'], PDO::PARAM_STR);
-			$stmt->execute();
+			
+			if ($stmt->execute()) {
+				return true;
+			}else{
+				return false;
+			}
 			//$stmt->close();
 		} catch (PDOException $e) {
 			print_r($e->getMessage());
