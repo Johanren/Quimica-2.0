@@ -23,6 +23,23 @@ class LoginModelo extends Conexion{
 		}
 	}
 
+	function ConsultarEmailModelo($email){
+		$sql = "SELECT * FROM $this->tabla WHERE email = ?";
+		try {
+			$conn = new Conexion();
+			$stmt = $conn->conectar()->prepare($sql);
+			$stmt->bindParam(1, $email, PDO::PARAM_STR);
+			if ($stmt->execute()) {
+				return $stmt->fetchAll();
+			}else{
+				return [];
+			}
+			$stmt->close();
+		} catch (Exception $e) {
+			
+		}
+	}
+
 	function ingresarLoginModelo($datos){
 		$stmt = Conexion::conectar()->prepare("SELECT personas.idPersonas, personasrol.email, personasrol.password, rol.Roles FROM $this->tabla INNER JOIN personas ON personasrol.idPersonas = personas.idPersonas INNER JOIN rol ON personasrol.idRol = rol.idRol WHERE personasrol.email = :email");
 

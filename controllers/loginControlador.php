@@ -4,10 +4,10 @@ class LoginControlador {
 
 	function ingresarLoginControlador(){
 		if (isset($_POST['enviarAcceso'])) {
-
+			$hash=password_hash($_POST['claveIngreso'], PASSWORD_DEFAULT);
 			$datos = array(
 				'email' => $_POST['emailIngreso'],
-				'clave' => $_POST['claveIngreso']
+				'clave' => $hash
 			);
 
 
@@ -17,7 +17,7 @@ class LoginControlador {
 			//var_dump($respuesta);
 
 			if ($respuesta['email'] == $_POST['emailIngreso'] &&
-				$respuesta['password'] == $_POST['claveIngreso']) {
+				$respuesta['password'] == password_verify($_POST['claveIngreso'], $hash)) {
 
 
 				session_start();
@@ -27,6 +27,7 @@ class LoginControlador {
 			$_SESSION['Roles'] = $respuesta['Roles'];
 
 			if ($_SESSION['Roles'] == "Administrador") {
+				print "<script>alert('Usuario Logeado')</script>";
 				header('location:usuario');
 			} else {
 				header('location:usuario');
@@ -40,10 +41,10 @@ class LoginControlador {
 function ingresarLoginSalirControlador()
 {
 	if (isset($_POST['enviarAcces'])) {
-
+		$hash=password_hash($_POST['claveIngreso'], PASSWORD_DEFAULT);
 		$datos = array(
 			'email' => $_POST['emailIngreso'],
-			'clave' => $_POST['claveIngreso']
+			'clave' => $hash
 		);
 
 
@@ -53,7 +54,7 @@ function ingresarLoginSalirControlador()
 			//var_dump($respuesta);
 
 		if ($respuesta['email'] == $_POST['emailIngreso'] &&
-			$respuesta['password'] == $_POST['claveIngreso']) {
+			$respuesta['password'] == password_verify($_POST['claveIngreso'], $hash)) {
 
 
 			session_start();
@@ -106,9 +107,10 @@ function actualizarRolControlador(){
 
 function actualizarRolControlador1(){
 	if (isset($_POST['enviar'])) {
+		$hash=password_hash($_POST['claveEditar'], PASSWORD_DEFAULT);
 		$datosEditar1 = array('idPersona' => $_POST['id'],
 			'email' => $_POST['emailEditar'],
-			'clave' => $_POST['claveEditar'],
+			'clave' => $hash,
 			'idRol' => $_POST['rolEditar']);
 			#var_dump($datosEditar1);
 		$editarRol1 = new LoginModelo();
