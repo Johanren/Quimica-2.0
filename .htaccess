@@ -1,0 +1,9 @@
+#IMPEDIR QUE SE VISUALICEN LOS ARCHIVOS DE UN DIRECTORIO.
+
+Options ALL -Indexes
+
+# MOSTRAR LAS URLS AMIGABLES
+
+RewriteEngine on
+
+RewriteRule ^(\w+)$ index.php?action=$1
