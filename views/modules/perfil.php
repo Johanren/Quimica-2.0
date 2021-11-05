@@ -30,7 +30,15 @@ if (isset($_GET['action'])) {
                        
                     </div>
                         <div class="col-4">
-                            <img src="<?php print $login['foto perfil']?>" width="160" class="rounded">
+                            <img src="<?php 
+
+                            if($login['foto perfil'] == null){
+                                print "views/perfil/foto.png";
+                            }else{
+                                print $login['foto perfil'];
+                            }
+
+                            ?>" width="160" class="rounded">
                         </div>
                     </div>
                     <input type="file" name="foto" class="form-control mt-5" multiple>

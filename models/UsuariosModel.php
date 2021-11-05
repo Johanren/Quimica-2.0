@@ -6,7 +6,9 @@ class UsuariosModel extends Conexion{
 		//METODO PARA INSERTAR (CREATE) DATOS EN LA BD
 	private $tabla = 'personas';
 	public function registarUsuariosModelo($datos){
-		$stmt = Conexion::conectar()->prepare("INSERT INTO $this->tabla (`nombre`, `apellido`, `documentoIdentidad`, `numeroDocumento`, `fechaNacimiento`) VALUES (?,?,?,?,?)");
+		try {
+			$conn = new Conexion();
+			$stmt = $conn->conectar()->prepare("INSERT INTO $this->tabla (`nombre`, `apellido`, `documentoIdentidad`, `numeroDocumento`, `fechaNacimiento`) VALUES (?,?,?,?,?)");
 		$stmt->bindParam(1,$datos['nombre'], PDO::PARAM_STR);
 		$stmt->bindParam(2,$datos['apellido'], PDO::PARAM_STR);
 		$stmt->bindParam(3,$datos['t_d'], PDO::PARAM_STR);
@@ -21,6 +23,10 @@ class UsuariosModel extends Conexion{
 		}
 
 		$stmt->close();
+		} catch (Exception $e) {
+			
+		}
+		
 	}
 
 	function optenerUltimoIdModelo(){
