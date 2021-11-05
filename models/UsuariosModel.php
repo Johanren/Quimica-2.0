@@ -105,7 +105,8 @@ class UsuariosModel extends Conexion{
 	}
 
 	public function actualizarUsuarioModel($datos){
-		$stmt = conexion::conectar()->prepare("UPDATE $this->tabla SET nombre=?,apellido=?,documentoIdentidad=?,numeroDocumento=?,fechaNacimiento=? WHERE idPersonas = ?");
+		$conn = new conexion();
+		$stmt = $conn->conectar()->prepare("UPDATE $this->tabla SET nombre=?,apellido=?,documentoIdentidad=?,numeroDocumento=?,fechaNacimiento=? WHERE idPersonas = ?");
 
 		$stmt->bindParam(1, $datos['nombre'], PDO::PARAM_STR);
 		$stmt->bindParam(2, $datos['apellido'], PDO::PARAM_STR);
@@ -128,7 +129,8 @@ class UsuariosModel extends Conexion{
 	//Perfil
 
 	public function actualizarPerfilModel($datos){
-		$stmt = conexion::conectar()->prepare("UPDATE $this->tabla SET nombre = :nombre, fechaNacimiento = :fN, apellido = :apellido WHERE idPersonas = :id");
+		$conn =  new conexion();
+		$stmt = $conn->conectar()->prepare("UPDATE $this->tabla SET nombre = :nombre, fechaNacimiento = :fN, apellido = :apellido WHERE idPersonas = :id");
 
 		$stmt->bindParam(':nombre', $datos['nombre'], PDO::PARAM_STR);
 		$stmt->bindParam(':fN', $datos['fN'], PDO::PARAM_STR);
@@ -144,6 +146,24 @@ class UsuariosModel extends Conexion{
 
 		$stmt->close();
 
+	}
+
+	function actualizarFotoModelo($foto,$id){
+		$sql = "UPDATE `personas` SET `foto perfil`=? WHERE `idPersonas`=?";
+		try {
+			$conn = new Conexion();
+			$stmt = $conn->conectar()->prepare($sql);
+			$stmt->bindParam(1, $foto, PDO::PARAM_STR);
+			$stmt->bindParam(2, $id, PDO::PARAM_INT);
+			if ($stmt->execute()) {
+				return true;
+			}else{
+				return false;
+			}
+			$stmt->close();
+		} catch (Exception $e) {
+			
+		}
 	}
 
 
@@ -195,7 +215,8 @@ class UsuariosModel extends Conexion{
 		$sql = "SELECT * FROM `personasrol` INNER JOIN personas ON personasrol.idPersonas = personas.idPersonas INNER JOIN rol ON personasrol.idRol = rol.idRol WHERE $cond";
 		#print $sql;
 		try {
-			$stmt = Conexion::conectar()->prepare($sql);
+			$conn = new Conexion();
+			$stmt = $conn ->conectar()->prepare($sql);
 			$stmt -> bindParam(1,$dato, PDO::PARAM_STR);
 			if($stmt->execute()){
 				return $stmt -> fetchAll();

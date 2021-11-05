@@ -1,5 +1,10 @@
 <?php
 
+if (!$_SESSION['validar']) {
+    print "<script>alert('No has iniciado sesion')</script>";
+  echo('<script>window.location="ingresar"</script>');
+}
+
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'okss') {
         print '<p class="alert alert-success" role="alert">Restaurante Actualizado Correctamente <button type="button" class="close" data-dismiss="alert" aria-label="Close">

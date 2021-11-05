@@ -1,8 +1,14 @@
-<h1 class="h3 mb-3 font-weight-normal">Perfil Usuario</h1><br><br>
+<h1 class="h3 mb-3 font-weight-normal">Perfil Usuario</h1><br>
 <?php
+
+if (!$_SESSION['validar']) {
+  echo('<script>window.location="ingresar"</script>');
+}
+
 $ctrl = new PerfilControlador();
-$ctrl->actualizarPerfilControlador();
+//$ctrl->actualizarPerfilControlador();
 $login = $ctrl->perfilUsuario();
+$ctrl->actualizarFotoControlador();
 if (isset($_GET['action'])) {
     if ($_GET['action'] == 'chang') {
         print '<p class="alert alert-success" role="alert">Usuario Actualizado Correctamente <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -11,7 +17,7 @@ if (isset($_GET['action'])) {
     }
 }
 ?>
-<form method="post">
+<form method="post" enctype='multipart/form-data'>
     <input type="hidden" name="id" value="<?php print $login['idPersonas']?>">
     <div class="row">
         <div class="col-4">
@@ -20,6 +26,15 @@ if (isset($_GET['action'])) {
         <div class="col-4">
             <form method="post" class="form-signin">
                 <div class="row">
+                    <div class="col-4">
+                       
+                    </div>
+                        <div class="col-4">
+                            <img src="<?php print $login['foto perfil']?>" width="160" class="rounded">
+                        </div>
+                    </div>
+                    <input type="file" name="foto" class="form-control mt-5" multiple>
+                <div class="row mt-5">
                     <div class="col">
                         <h6>Nombre Usuario</h6>
                         <input type="text" class="form-control" name="nombreEditar" value="<?php print $login['nombre']?>" placeholder="Nombre Usuario" required="">

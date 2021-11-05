@@ -1,5 +1,10 @@
 <?php  
 
+if (!$_SESSION['validar']) {
+	print "<script>alert('No has iniciado sesion')</script>";
+  echo('<script>window.location="ingresar"</script>');
+}
+
 $listarAc = new ResultadosActividadControlador();
 $listar = $listarAc->listarEstudiantesResultadoControlador();
 $listarActividades = $listarAc->BuscarFechaActividad();

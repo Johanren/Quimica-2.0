@@ -56,4 +56,22 @@ class PerfilControlador
 		}
 		
 	}
+
+	function actualizarFotoControlador(){
+		if (isset($_FILES['foto'])) {
+			$id = $_POST['id'];
+			$name = $_FILES['foto']['name'];
+			$name_tpm = $_FILES['foto']['tmp_name'];
+			$ruta = "views/perfil/".$name;
+			$mover = move_uploaded_file($name_tpm, $ruta);
+			$modelo = new UsuariosModel();
+			$respuesta = $modelo->actualizarFotoModelo($ruta, $id);
+			if ($respuesta) {
+				print "<script>alert('Foto de Perfil actualizada')</script>";
+				echo '<script>window.location="perfil"</script>';
+			}else{
+				print "<script>alert('Foto de Perfil No actualizada')</script>";
+			}
+		}
+	}
 }

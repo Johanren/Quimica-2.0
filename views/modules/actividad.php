@@ -1,4 +1,10 @@
-<?php  
+<?php 
+
+if (!$_SESSION['validar']) {
+    print "<script>alert('No has iniciado sesion')</script>";
+    echo('<script>window.location="ingresar"</script>');
+}
+
 $actividad = new ActividadesControlador();
 $actividad->registrarActividadesControlador();
 
@@ -51,13 +57,13 @@ $actividad->registrarActividadesControlador();
 
                         <div class="row">
                             <div class="col">
-                                 <button type="submit" name="regActividad" class="btn btn-primary mb-2">Resgistrar Actividad</button>
-                            </div>
-                        </div>
+                             <button type="submit" name="regActividad" class="btn btn-primary mb-2">Resgistrar Actividad</button>
+                         </div>
+                     </div>
 
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>    
+                 </div>
+             </div>
+         </form>
+     </div>
+ </div>    
 </div>
