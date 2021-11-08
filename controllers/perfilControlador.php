@@ -14,6 +14,16 @@ class PerfilControlador
 		return $login;
 	}
 
+	public function img()
+	{
+		$id = $_GET['id'];
+		//print "xxxx" . $id;
+		$consultarLogin = new LoginModelo();
+		$login = $consultarLogin->consultarLoginIdModel($id);
+
+		return $login;
+	}
+
 	public function actualizarPerfilControlador()
 	{
 		if (isset($_POST['enviar'])) {
