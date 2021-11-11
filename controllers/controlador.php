@@ -19,7 +19,7 @@ class Controlador{
 		if (isset($_GET['action'])) {
 			$enlace = $_GET['action'];
 		}else{
-			if (isset($_SESSION['validar'])) {
+			if (isset($_SESSION['Roles'])) {
 				$enlace = "inicio";
 			}else{
 				$enlace = "ingresar";

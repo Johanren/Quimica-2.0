@@ -8,7 +8,7 @@ session_start();
 //print $_SESSION['rol'];
 
 
-if (isset($_SESSION['validar'])) {
+if (isset($_SESSION['Roles'])) {
 
 	if ($_SESSION['Roles'] == "Administrador") {
 		print 
@@ -152,5 +152,3 @@ if (isset($_SESSION['validar'])) {
 		</nav>';
 	}
 }
-
-

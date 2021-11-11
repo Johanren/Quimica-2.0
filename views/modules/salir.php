@@ -3,7 +3,7 @@
 	if (isset($_SESSION['validar'])) {
 		$msg = "El usuario: {$_SESSION['email']} ha cerrado la sesion...";
 		//exit();
-		//header('location:ingresar');
+		echo '<script>window.location="ingresar"</script>';
 
 		
 	}
