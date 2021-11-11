@@ -1,4 +1,4 @@
-<h1 class="h3 mb-3 font-weight-normal">Perfil Usuario</h1><br>
+    <h1 class="h3 mb-3 font-weight-normal">Perfil Usuario</h1><br>
 <?php
 
 if (!$_SESSION['validar']) {
