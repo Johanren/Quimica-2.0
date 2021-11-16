@@ -10,6 +10,7 @@
 	<link href="views/css/carousel.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="views/css/jquery-ui.css">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="views/css/loader.css">
 
 
 	<title>Quimica</title>
@@ -17,59 +18,6 @@
 
 </head>
 <body>
-    <style>
-    .contenedor_carga{
-        background-color: #f3f3f3;
-        position: fixed;
-        width: 100vw;
-        height: 100vh;
-        z-index: 9999;
-        transition: all 1.5s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .loader,
-    .loader:before,
-    .loader:after{
-        border-radius: 50%;
-        width: 2.5em;
-        height: 2.5em;
-        animation: loader 1.5s infinite ease-in-out;
-    }
-    .loader{
-        color:  #4685fa;
-        font-size: 13px;
-        position: relative;
-        animation-delay: -0.16s;
-    }
-    .loader:before,
-    .loader:after{
-        content: '';
-        position: absolute;
-        top: 0;
-    }
-    .loader:before{
-        left: -3.5em;
-        animation-delay: -0.32s;
-    }
-    .loader:after{
-        left: 3.5em;
-    }
-
-    @keyframes loader{
-        0%,
-        80%
-        100%{
-            box-shadow: 0 2.5em 0 -1.3em;
-        }
-        40%{
-            box-shadow: 0 2.5em 0 0;
-        }
-
-    }
-</style>
 	<!--<div id="contenedor_carga">
         <div id="carga">
             
@@ -147,33 +95,8 @@
 <script src="views/js/ajax.js"></script>
 <!--<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>-->
 <script src="views/js/validacion.js"></script>
-<script>
-   window.onload = function(){
-      var contenedor = document.getElementById('contenedor_carga');
-
-      contenedor.style.visibility = 'hidden';
-      contenedor.style.opacity = '0';
-  }
-</script>
-<script>
-    window.addEventListener('load', () => {
-        const contenedor_carga = document.querySelector('.contenedor_carga')
-        contenedor_carga.style.opacity = 0
-        contenedor_carga.style.visibility = 'hidden'
-    })
-</script>
-<script>
-    var check = function() {
-        if (document.getElementById('password').value ==
-            document.getElementById('confirm_password').value) {
-            document.getElementById('message').style.color = 'green';
-        document.getElementById('message').innerHTML = 'Contraseñas correctas';
-    } else {
-        document.getElementById('message').style.color = 'red';
-        document.getElementById('message').innerHTML = 'Contraseñas incorrectas';
-    }
-}
-</script>
+<script src="views/js/loader.js"></script>
+<script src="views/js/validacion.js"></script>
 </body>
 
 </html>

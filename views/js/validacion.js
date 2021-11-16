@@ -9,18 +9,18 @@ function validarRegistro(){
 
     var expresion = /^[a-zA-A0-9]*$/;
     //Valirdar Usuario
-        if(nombre!=''){
-            if(nombre.length > 15){
-                document.querySelector("label[for='nombreRegistro']").innerHTML +=
-                "<br>Por favor escriba solo 15 caracteres";
-                return false;
-            }
-            if(!expresion.test(nombre)){
-                document.querySelector("label[for='nombreRegistro']").innerHTML +=
-                "<br>Por favor escriba solo caracteres";
-                return false;
-            }
+    if(nombre!=''){
+        if(nombre.length > 15){
+            document.querySelector("label[for='nombreRegistro']").innerHTML +=
+            "<br>Por favor escriba solo 15 caracteres";
+            return false;
         }
+        if(!expresion.test(nombre)){
+            document.querySelector("label[for='nombreRegistro']").innerHTML +=
+            "<br>Por favor escriba solo caracteres";
+            return false;
+        }
+    }
     //validar contraseña
         /*if(numero !=''){
             var passval =/^((?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,})$/;
@@ -35,5 +35,15 @@ function validarRegistro(){
                 return false;
             }
         }*/
-    return false;
+        return false;
+    }
+    var check = function() {
+        if (document.getElementById('password').value ==
+            document.getElementById('confirm_password').value) {
+            document.getElementById('message').style.color = 'green';
+        document.getElementById('message').innerHTML = 'Contraseñas correctas';
+    } else {
+        document.getElementById('message').style.color = 'red';
+        document.getElementById('message').innerHTML = 'Contraseñas incorrectas';
+    }
 }
