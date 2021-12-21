@@ -13,9 +13,19 @@
     <link rel="stylesheet" type="text/css" href="views/css/loader.css">
 
 
-	<title>Quimica</title>
-	
+    <title>Quimica</title>
 
+    <style>
+    #nav a {  
+        color: #4CAF50;  
+        font-size: 20px;  
+        margin-top: 22px;  
+        font-weight: 600;  
+    }  
+    a:hover, a:visited, a:link, a:active {  
+        text-decoration: none;  
+    }  
+</style>
 </head>
 <body>
 	<!--<div id="contenedor_carga">
@@ -25,7 +35,7 @@
     </div>-->
     <div class="contenedor_carga">
         <div class="loader">
-            
+
         </div>
     </div>
 
@@ -42,13 +52,13 @@
     
 
     <section>
-       <?php
-       $mvc = new Controlador();
-       $mvc->enlacesPaginasControlador();
-       ?>
-   </section>
-   <?php
-   if (isset($_GET['action'])) {
+     <?php
+     $mvc = new Controlador();
+     $mvc->enlacesPaginasControlador();
+     ?>
+ </section>
+ <?php
+ if (isset($_GET['action'])) {
     if ($_GET['action'] == 'salir') {
         print '
         <div class="row">
@@ -97,6 +107,55 @@
 <script src="views/js/validacion.js"></script>
 <script src="views/js/loader.js"></script>
 <script src="views/js/validacion.js"></script>
+
+<script>  
+    $(document).ready (function () {  
+        $('#data').after ('<div id="nav" align="center"></div>');  
+        var rowsShown = 5;  
+        var rowsTotal = $('#data tbody tr').length;  
+        var numPages = rowsTotal/rowsShown;  
+        for (i = 0;i < numPages;i++) {  
+            var pageNum = i + 1;  
+            $('#nav').append ('<a href="#" rel="'+i+'">'+pageNum+'</a> ');  
+        }  
+        $('#data tbody tr').hide();  
+        $('#data tbody tr').slice (0, rowsShown).show();  
+        $('#nav a:first').addClass('active');  
+        $('#nav a').bind('click', function() {  
+            $('#nav a').removeClass('active');  
+            $(this).addClass('active');  
+            var currPage = $(this).attr('rel');  
+            var startItem = currPage * rowsShown;  
+            var endItem = startItem + rowsShown;  
+            $('#data tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).  
+            css('display','table-row').animate({opacity:1}, 300);  
+        });  
+    });  
+</script>  
+<script>  
+    $(document).ready (function () {  
+        $('#data1').after ('<div id="nav" align="center"></div>');  
+        var rowsShown = 5;  
+        var rowsTotal = $('#data1 tbody tr').length;  
+        var numPages = rowsTotal/rowsShown;  
+        for (i = 0;i < numPages;i++) {  
+            var pageNum = i + 1;  
+            $('#nav').append ('<a href="#" rel="'+i+'">'+pageNum+'</a> ');  
+        }  
+        $('#data1 tbody tr').hide();  
+        $('#data1 tbody tr').slice (0, rowsShown).show();  
+        $('#nav a:first').addClass('active');  
+        $('#nav a').bind('click', function() {  
+            $('#nav a').removeClass('active');  
+            $(this).addClass('active');  
+            var currPage = $(this).attr('rel');  
+            var startItem = currPage * rowsShown;  
+            var endItem = startItem + rowsShown;  
+            $('#data1 tbody tr').css('opacity','0.0').hide().slice(startItem, endItem).  
+            css('display','table-row').animate({opacity:1}, 300);  
+        });  
+    });  
+</script>  
 </body>
 
 </html>

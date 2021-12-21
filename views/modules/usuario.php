@@ -68,24 +68,24 @@ $respuesta = $ctrl->listarUsuarioControlador();
 			
 			
 		</div>
-		<div class="col-4">
+		<div class="col">
 			<br>
 			<form action="" method="post" class="form-inline" class="formulario">
 				<div class="form-group mx-sm-3 mb-2">
 					<input class="form-control me-2" type="text" name="campbuscar" require>
 				</div>
 				<button type="submit" class="btn btn-primary mb-2" name="buscar" value="buscar">Buscar</button>
-				<div class="row">
-					<div class="col-4">
-						<input type="radio" name="camBuscar" value="nombre" required> nombre
+				<div class="form-group mx-sm-3 mb-2">
+					<div class="form-check form-check-inline form-group mx-sm-3 mb-2">
+						<input class="form-check-input" type="checkbox" name="camBuscar" id="inlineCheckbox1" value="nombre" required="">
+						<label class="form-check-label" for="inlineCheckbox1">Nombre</label>
 					</div>
-					<div class="col-4">
-						<input type="radio" name="camBuscar" value="numeroDocumento" required> NumeroDocumento
-					</div>
-					<div class="col-4">
-						<input type="radio" name="camBuscar" value="fechaNacimeinto" required> fechaNacimeinto
+					<div class="form-check form-check-inline form-group mx-sm-3 mb-2">
+						<input class="form-check-input" type="checkbox" name="camBuscar" id="inlineCheckbox2" value="numeroDocumento">
+						<label class="form-check-label" for="inlineCheckbox2">Documento</label>
 					</div>
 				</div>
+				
 				<?php
 				$ctrl = new UsuarioControlador();
 				$resultado = $ctrl->BuscarUsuarios();
@@ -104,97 +104,85 @@ $respuesta = $ctrl->listarUsuarioControlador();
 		?>
 
 	</div>
-	<div class="row">
-		<div class="col-2">
-			
-		</div>
-		<div class="col-8">
-			<table class="table table-striped table-dark" border="1">
-				<thead>
-					<th scope="col">Nombre</th>
-					<th scope="col">Apellido</th>
-					<th scope="col">email</th>
-					<th scope="col">tipoDocumento</th>
-					<th scope="col">numeroDocumento</th>
-					<th scope="col">fechaNacimeinto</th>
-					<th scope="col">Rol</th>
-					<th scope="col">Editar</th>
-					<!--<th scope="col">Eliminar</th>-->
-				</thead>
-				<tbody>
-					<?php
-					foreach ($resultado as $key => $value) {
-						print '
-						<tr>
-						<td>' . $value['nombre'] . '</td>
-						<td>' . $value['apellido'] . '</td>
-						<td>' . $value['email'] . '</td>
-						<td>' . $value['documentoIdentidad'] . '</td>
-						<td>' . $value['numeroDocumento'] . '</td>
-						<td>' . $value['fechaNacimiento'] . '</td>
-						<td>'.$value['Roles'].'</td>
-						<td><a href="index.php?action=editarRol&id=' . $value['idPersonas'] . '"><button class="btn btn-primary mb-2"><img src="https://image.flaticon.com/icons/png/128/1160/1160758.png" width="20"></button>
-						</a>
-						</td>
-						<!--<td><a href="index.php?action=usuario&delrol=' . $value['idPersonas'] . '"><button class="btn btn-primary mb-2"><img src="https://image.flaticon.com/icons/png/128/3496/3496416.png" width="20"></button>
-						</a>
-						</td>-->
-						</tr>
-						';
-					}
-
-					?>
-				</tbody>
-			</table>
-			<?php
-		}
-		?>
-		<br><br>
-		
-	</div>
-</div>
-<div class="row">
-
-	<div class="col-2">
-
-	</div>
-	<div class="col-8">
-
-		<table border="1" class="table table-striped table-dark">
+	<div class="container" style="margin-top: 10px;padding: 5px">
+		<table id="data1" align="center" class="table table-striped table-dark" border="1" style="width:100%">
 			<thead>
-				<th>Nombre</th>
-				<th>Apellido</th>
-				<th>Tipo-Documento</th>
-				<th>Numero-Documento</th>
-				<th>FechaNacimiento</th>
-				<th>Editar</th>
-				<!--<th>Eliminar</th>-->
+				<th scope="col">Nombre</th>
+				<th scope="col">Apellido</th>
+				<th scope="col">email</th>
+				<th scope="col">tipoDocumento</th>
+				<th scope="col">numeroDocumento</th>
+				<th scope="col">fechaNacimeinto</th>
+				<th scope="col">Rol</th>
+				<th scope="col">Editar</th>
+				<!--<th scope="col">Eliminar</th>-->
 			</thead>
 			<tbody>
-
 				<?php
-				foreach ($respuesta as $row => $valor) {
-					print "
+				foreach ($resultado as $key => $value) {
+					print '
 					<tr>
-					<td>{$valor['nombre']}</td>
-					<td>{$valor['apellido']}</td>
-					<td>{$valor['documentoIdentidad']}</td>
-					<td>{$valor['numeroDocumento']}</td>
-					<td>{$valor['fechaNacimiento']}</td>
-					<td><a href='index.php?action=editar&id={$valor['idPersonas']}'><button class='btn btn-primary mb-2'><img src='https://image.flaticon.com/icons/png/128/1160/1160758.png' width='20'></button>
+					<td>' . $value['nombre'] . '</td>
+					<td>' . $value['apellido'] . '</td>
+					<td>' . $value['email'] . '</td>
+					<td>' . $value['documentoIdentidad'] . '</td>
+					<td>' . $value['numeroDocumento'] . '</td>
+					<td>' . $value['fechaNacimiento'] . '</td>
+					<td>'.$value['Roles'].'</td>
+					<td><a href="index.php?action=editarRol&id=' . $value['idPersonas'] . '"><button class="btn btn-primary mb-2"><img src="https://image.flaticon.com/icons/png/128/1160/1160758.png" width="20"></button>
 					</a>
 					</td>
-					<!--<td><a href='index.php?action=usuario&del={$valor['idPersonas']}'><button class='btn btn-primary mb-2'><img src='https://image.flaticon.com/icons/png/128/3496/3496416.png' width='20'></button>
+					<!--<td><a href="index.php?action=usuario&delrol=' . $value['idPersonas'] . '"><button class="btn btn-primary mb-2"><img src="https://image.flaticon.com/icons/png/128/3496/3496416.png" width="20"></button>
 					</a>
 					</td>-->
-					</tr>"
-					;
+					</tr>
+					';
 				}
+
 				?>
 			</tbody>
-			<tbody>
-
-			</tbody>
 		</table>
-	</div>
+		<?php
+	}
+	?>
+	<br><br>
+</div>
+<div class="container" style="margin-top: 10px;padding: 5px">
+
+	<table border="1" align="center" id="data" class="table table-striped table-dark" style="width:100%">
+		<thead>
+			<th>Nombre</th>
+			<th>Apellido</th>
+			<th>Tipo-Documento</th>
+			<th>Numero-Documento</th>
+			<th>FechaNacimiento</th>
+			<th>Editar</th>
+			<!--<th>Eliminar</th>-->
+		</thead>
+		<tbody>
+
+			<?php
+			foreach ($respuesta as $row => $valor) {
+				print "
+				<tr>
+				<td>{$valor['nombre']}</td>
+				<td>{$valor['apellido']}</td>
+				<td>{$valor['documentoIdentidad']}</td>
+				<td>{$valor['numeroDocumento']}</td>
+				<td>{$valor['fechaNacimiento']}</td>
+				<td><a href='index.php?action=editar&id={$valor['idPersonas']}'><button class='btn btn-primary mb-2'><img src='https://image.flaticon.com/icons/png/128/1160/1160758.png' width='20'></button>
+				</a>
+				</td>
+				<!--<td><a href='index.php?action=usuario&del={$valor['idPersonas']}'><button class='btn btn-primary mb-2'><img src='https://image.flaticon.com/icons/png/128/3496/3496416.png' width='20'></button>
+				</a>
+				</td>-->
+				</tr>"
+				;
+			}
+			?>
+		</tbody>
+		<tbody>
+
+		</tbody>
+	</table>
 </div>

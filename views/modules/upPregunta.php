@@ -26,7 +26,7 @@ $listarRes->ActualizarRespuestasControlador();
 	<div class="col-2"></div>
 	<div class="col-8">
 		<h1>Editar Actividad</h1>
-		<form  method="post">
+		<form  method="post" >
 			<div class="row mt-5">
 				<div class="col">
 					<input type="hidden" name="idActividad" value="<?php print $ConsultarActividad[0]['idActividades'] ?>">

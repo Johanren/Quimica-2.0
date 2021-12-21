@@ -134,20 +134,8 @@ class UsuarioControlador
 				case 'nombre':
 				$campo = "nombre";
 				break;
-				case 'email':
-				$campo = "email";
-				break;
-				case 'tipoDocumento':
-				$campo = "tipoDocumento";
-				break;
 				case 'numeroDocumento':
 				$campo = "numeroDocumento";
-				break;
-				case 'numero':
-				$campo = "numero";
-				break;
-				case 'fechaNacimiento':
-				$campo = "fechaNacimeinto";
 				break;
 				default:
 				$campo = "";

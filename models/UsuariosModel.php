@@ -194,24 +194,8 @@ class UsuariosModel extends Conexion{
 			$cond = "nombre like ?";
 			$dato .= '%';
 			break;
-			case 'email':
-			$cond = "email like ?";
-			$dato .= '%';
-			break;
-			case 'tipoDocumento':
-			$cond = "tipoDocumento like ?";
-			$dato .= '%';
-			break;
 			case 'numeroDocumento':
 			$cond = "numeroDocumento like ?";
-			$dato .= '%';
-			break;
-			case 'numero':
-			$cond = "numero like ?";
-			$dato .= '%';
-			break;
-			case 'fechaNacimeinto':
-			$cond = "fechaNacimeinto like ?";
 			$dato .= '%';
 			break;
 			default:
