@@ -21,6 +21,12 @@
         font-size: 20px;  
         margin-top: 22px;  
         font-weight: 600;  
+    }
+    #nav1 a {  
+        color: #4CAF50;  
+        font-size: 20px;  
+        margin-top: 22px;  
+        font-weight: 600;  
     }  
     a:hover, a:visited, a:link, a:active {  
         text-decoration: none;  
@@ -134,18 +140,18 @@
 </script>  
 <script>  
     $(document).ready (function () {  
-        $('#data1').after ('<div id="nav" align="center"></div>');  
+        $('#data1').after ('<div id="nav1" align="center"></div>');  
         var rowsShown = 5;  
         var rowsTotal = $('#data1 tbody tr').length;  
         var numPages = rowsTotal/rowsShown;  
         for (i = 0;i < numPages;i++) {  
             var pageNum = i + 1;  
-            $('#nav').append ('<a href="#" rel="'+i+'">'+pageNum+'</a> ');  
+            $('#nav1').append ('<a href="#" rel="'+i+'">'+pageNum+'</a> ');  
         }  
         $('#data1 tbody tr').hide();  
         $('#data1 tbody tr').slice (0, rowsShown).show();  
-        $('#nav a:first').addClass('active');  
-        $('#nav a').bind('click', function() {  
+        $('#nav1 a:first').addClass('active');  
+        $('#nav1 a').bind('click', function() {  
             $('#nav a').removeClass('active');  
             $(this).addClass('active');  
             var currPage = $(this).attr('rel');  

@@ -33,7 +33,7 @@ $notas = $nota -> listarResultado();
 
 			
 			?>
-			<table class="table table-striped table-dark mt-5" border="1">
+			<table class="table table-striped table-dark mt-5" border="1" id="data"> 
 				<thead>
 					<tr>
 						<th>Estudiante</th>
@@ -56,14 +56,15 @@ $notas = $nota -> listarResultado();
 			</table>
 			<?php  
 		}else{
-			print '<p class="alert alert-success" role="alert">Actividad no Encontrada<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			print '
+			<br><p class="alert alert-success" role="alert">Actividad no Encontrada<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 			<span aria-hidden="true">&times;</span>
 			</button></p>';
 		}
 		?>
 	</div>
 	<div class="col-8">
-		<table class="table table-striped table-dark" border="1">
+		<table class="table table-striped table-dark" border="1" id="data1">
 			<thead>
 				<tr>
 					<th>Id</th>

@@ -67,7 +67,7 @@ if (isset($_GET['action'])) {
 if (isset($datosPregunta)): ?>
 <div class="row">
 	<div class="col">
-		<table class="table">
+		<table class="table" id="data">
 			<thead>
 				<th>Enunciado de las Preguntas</th>
 				<th>Editar</th>

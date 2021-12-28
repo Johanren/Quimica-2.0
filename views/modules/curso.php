@@ -2,7 +2,7 @@
 
 if (!$_SESSION['validar']) {
 	print "<script>alert('No has iniciado sesion')</script>";
-  echo('<script>window.location="ingresar"</script>');
+	echo('<script>window.location="ingresar"</script>');
 }
 
 $listarGra = new GradoControlador();
@@ -29,10 +29,15 @@ $listar = $listarGra->listarGrado();
 			?>
 		</form>
 		<br>
+		
+	</div>
+	<div class="col-4">
+		<h1>Cursos</h1>
+
 		<?php  
 		if (isset($resultado)) {
 			?>
-			<table class="table table-striped table-dark mt-5">
+			<table class="table table-striped table-dark mt-5" id="data1">
 				<thead>
 					<tr>
 						<th>Curso</th>
@@ -56,10 +61,8 @@ $listar = $listarGra->listarGrado();
 			<?php  
 		}
 		?>
-	</div>
-	<div class="col-4">
-		<h1>Cursos</h1>
-		<table class="table table-striped table-dark mt-5">
+		
+		<table class="table table-striped table-dark mt-5" id="data">
 			<thead>
 				<tr>
 					<th>Curso</th>

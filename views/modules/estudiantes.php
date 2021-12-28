@@ -35,7 +35,7 @@ if ($cursoPer) {
 			<?php  
 			if (isset($listarEs)) {
 				?>
-				<table class="table table-striped table-dark mt-5">
+				<table class="table table-striped table-dark mt-5" id="data">
 					<thead>
 						<tr>
 							<th>Documento</th>
@@ -65,7 +65,7 @@ if ($cursoPer) {
 				<?php  
 			}
 			?>
-			<table class="table table-striped table-dark mt-5">
+			<table class="table table-striped table-dark mt-5" id="data1">
 				<thead>
 					<tr>
 						<th>Documento</th>

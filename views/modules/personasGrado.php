@@ -79,7 +79,7 @@ if (isset($_GET['action'])) {
 		$personasGrado = new GradoControlador();
 		$ctrl = $personasGrado->listarPersonasGrado();
 		?>
-		<table class="table table-striped table-dark">
+		<table class="table table-striped table-dark" id="data">
 			<thead>
 				<th>Nombres</th>
 				<th>Apellidos</th>

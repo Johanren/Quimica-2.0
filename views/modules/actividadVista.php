@@ -48,7 +48,7 @@ $listar = $ctrl->listarActividad();
 
 
             ?>
-            <table border="1" class="table table-striped table-dark mt-5">
+            <table border="1" class="table table-striped table-dark mt-5" id="data">
                 <thead>
                     <th>Actividad</th>
                     <th>Nivel Minimo</th>
@@ -78,7 +78,7 @@ $listar = $ctrl->listarActividad();
         ?>
     </div>
     <div class="col-7">
-        <table border="1" class="table table-striped table-dark">
+        <table border="1" class="table table-striped table-dark" id="data1">
             <thead>
                 <th>id</th>
                 <th>Actividad</th>

@@ -44,10 +44,13 @@ if ($listar) {
 					</div>
 				</form>
 				<br>
+				
+			</div>
+			<div class="col-8">
 				<?php  
 				if ($listarActividades) {
 					?>
-					<table class="table table-striped table-dark">
+					<table class="table table-striped table-dark" id="data">
 						<thead>
 							<tr>
 								<th>Estudiante</th>
@@ -69,16 +72,17 @@ if ($listar) {
 							?>
 						</tbody>
 					</table>
+					<br>
+					<hr>
 					<?php  
 				}else{
 					print '<p class="alert alert-success mt-5" role="alert">Actividad no Encontrada<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
-					</button></p>';
+					</button></p>
+					<hr>';
 				}
 				?>
-			</div>
-			<div class="col-8">
-				<table class="table table-striped table-dark">
+				<table class="table table-striped table-dark" id="data1">
 					<thead>
 						<tr>
 							<th>Id</th>
